@@ -5,7 +5,9 @@ import Course from './components/Course/Course';
 import Home from './components/Home/Home';
 import Main from './components/Layout/Main';
 import Login from './components/Login/Login';
+import RequireAuth from './components/Signup/RequireAuth';
 import Signup from './components/Signup/Signup';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +21,8 @@ function App() {
         },
         {
           path:'/course',
-          element:<Course></Course>
+          element:<RequireAuth><Course></Course></RequireAuth>
+
         },
         {
           path:'/login',
@@ -39,6 +42,7 @@ function App() {
   return (
     <div>
       <RouterProvider router={router}></RouterProvider>
+      
     </div>
   );
 }

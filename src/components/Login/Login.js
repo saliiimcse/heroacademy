@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 import app from '../firebase/firebase.config';
 
 
 
 const Login = () => {
+    const navigate = useNavigate();
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -17,6 +18,9 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
+            if(user){
+                navigate('/')
+            }
         })
         .catch(error =>{
             console.log('error: ', error);
