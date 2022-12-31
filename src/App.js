@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import Blog from './components/Blog/Blog';
 import Course from './components/Course/Course';
 import Home from './components/Home/Home';
 import Main from './components/Layout/Main';
 import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +24,14 @@ function App() {
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/signup',
+          element:<Signup></Signup>
+        },
+        {
+          path:'/blog',
+          element:<Blog></Blog>
         }
       ]
     }
