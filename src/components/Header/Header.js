@@ -1,24 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Header.css'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
 
 const Header = () => {
     const navLInkStyle = ({isActive}) =>{
         return {
-            color: isActive ? 'red' : 'black'
+            color: isActive ? 'red' : 'white'
         }
     }
     return (
-        <nav className='navigation md:flex md:justify-between py-2 bg-red-100'>
-            <div className='text-xl font-bold md:pl-10'>
-                <h3 className='sm:text-center'>Coding School</h3>
-            </div>
-            <div className='md:flex space-x-4 md:pr-10 font-semibold'>
-                <NavLink style={navLInkStyle} to='/'>Home</NavLink>
-                <NavLink style={navLInkStyle} to='/statistic'>Statistics</NavLink>
-                <NavLink style={navLInkStyle} to='/blog'>Blog</NavLink>
-            </div>
-        </nav>
+        <>
+        <Navbar bg="dark" variant="dark">
+            <Container className=''>
+                <Navbar.Brand >Hero Academe</Navbar.Brand>
+                <Nav className="me-auto">
+                    <NavLink className="me-2" style={navLInkStyle} to='/'>Home</NavLink>
+                    <NavLink className="me-2" style={navLInkStyle} to='/course'>Course</NavLink>
+                    <NavLink className="me-2" style={navLInkStyle} to='/blog'>Blog</NavLink>
+                    <NavLink className="me-2" style={navLInkStyle} to='/login'>Login</NavLink>
+                </Nav>
+            </Container>
+        </Navbar>
+        </>
     );
 };
 
