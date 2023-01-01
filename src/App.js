@@ -5,7 +5,12 @@ import Course from './components/Course/Course';
 import Home from './components/Home/Home';
 import Main from './components/Layout/Main';
 import Login from './components/Login/Login';
+<<<<<<< HEAD
 import RequireAuth from './components/Signup/RequireAuth';
+=======
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import RequireAuth from './components/RequireAuth/RequireAuth';
+>>>>>>> a67618d (creat userContext)
 import Signup from './components/Signup/Signup';
 
 
@@ -21,7 +26,11 @@ function App() {
         },
         {
           path:'/course',
+<<<<<<< HEAD
           element:<RequireAuth><Course></Course></RequireAuth>
+=======
+          element:<Course></Course>
+>>>>>>> a67618d (creat userContext)
 
         },
         {
@@ -34,7 +43,11 @@ function App() {
         },
         {
           path:'/blog',
-          element:<Blog></Blog>
+          element:<RequireAuth><Blog></Blog></RequireAuth>
+        },
+        {
+          path:'/*',
+          element:<PageNotFound></PageNotFound>
         }
       ]
     }
