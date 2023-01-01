@@ -1,12 +1,28 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Button, Col, Row } from 'react-bootstrap';
+import { Link, useLoaderData } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
+import { jsPDF } from "jspdf";
 
 const Course = () => {
     const data = useLoaderData();
-    console.log(data);
+    const generatePdf = () =>{
+        var doc = new jsPDF("p","pt","a4");
+        doc.html(document.querySelector('#bookData'),{
+            callback: function(pdf){
+                pdf.save("assignment.pdf");
+            }
+        })
+    }
+
+    // console.log(data);
     return (
-        <div className='d-flex m-5'>
+        <Row>
+            <Button onClick={generatePdf}>Download Pdf</Button>
+            <Col className='p-5'>
+                <Sidebar></Sidebar>
+            </Col>
+            <Col id='bookData'>
+            <div className='m-5'>
                 {
                     data.map(topic => <div
                     key={topic.id}
@@ -14,10 +30,12 @@ const Course = () => {
                     >
                         <p className='font-weight-bold'>Book Name: {topic.name}</p>
                         <p>Author: {topic.author}</p>
-                        <Button>More Details</Button>
+                        <Link to={`/course/${topic.id}`}>More Details</Link>
                     </div>)
                 }
-        </div>
+             </div>
+            </Col>
+        </Row>
     );
 };
 

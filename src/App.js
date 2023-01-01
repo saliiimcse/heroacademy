@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Blog from './components/Blog/Blog';
 import Course from './components/Course/Course';
+import CourseData from './components/CourseData/CourseData';
 import Home from './components/Home/Home';
 import Main from './components/Layout/Main';
 import Login from './components/Login/Login';
@@ -22,9 +23,16 @@ function App() {
         },
         {
           path:'/course',
-          loader:() => fetch('https://server-eta-pearl.vercel.app/book'),
+          loader:() => fetch('https://server-saliiimcse.vercel.app/book'),
           element:<Course></Course>
 
+        },
+        {
+          path:'/course/:bookId',
+          loader: async ({params}) =>{
+            return fetch(`https://server-saliiimcse.vercel.app/book/${params.bookId}`);
+         },
+         element:<RequireAuth><CourseData></CourseData></RequireAuth>
         },
         {
           path:'/login',
@@ -36,7 +44,7 @@ function App() {
         },
         {
           path:'/blog',
-          element:<RequireAuth><Blog></Blog></RequireAuth>
+          element:<Blog></Blog>
         },
         {
           path:'/*',
