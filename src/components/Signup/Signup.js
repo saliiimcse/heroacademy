@@ -1,27 +1,16 @@
-<<<<<<< HEAD
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-=======
 import {  getAuth, updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/UserContext';
->>>>>>> a67618d (creat userContext)
 import app from '../firebase/firebase.config';
 
 const auth = getAuth(app);
 const Signup = () => {
-<<<<<<< HEAD
-    const [errorMessage, setErrorMessage] = useState('');
-    const [success, setSuccess] = useState(false);
-=======
     const {createUser} = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
->>>>>>> a67618d (creat userContext)
     const handleForm= (event) =>{
         event.preventDefault();
         setSuccess(false);
@@ -32,13 +21,6 @@ const Signup = () => {
 
         // console.log(email, name, password);
         
-<<<<<<< HEAD
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(result =>{
-            console.log(result);
-            setSuccess(true);
-            form.reset();
-=======
         createUser( email, password)
         .then(result =>{
             const user = result.user;
@@ -59,7 +41,6 @@ const Signup = () => {
                 form.reset();
             }
             
->>>>>>> a67618d (creat userContext)
         })
         .catch(error =>{
             console.error('error',error);
@@ -93,3 +74,7 @@ const Signup = () => {
             <p>Already have an account? <Link to='/login'>Login</Link></p>
             </div>
         </div>
+    );
+};
+
+export default Signup;

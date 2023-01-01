@@ -1,13 +1,8 @@
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-<<<<<<< HEAD
-import { NavLink, useNavigate } from 'react-router-dom';
-import {getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
-=======
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {getAuth} from 'firebase/auth'
->>>>>>> a67618d (creat userContext)
 import app from '../firebase/firebase.config';
 import { AuthContext } from '../Context/UserContext';
 
@@ -15,9 +10,6 @@ import { AuthContext } from '../Context/UserContext';
 
 
 const Login = () => {
-<<<<<<< HEAD
-    const navigate = useNavigate();
-=======
     const {googleSignIn, githubSignIn, signIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,7 +18,6 @@ const Login = () => {
     console.log(location.state?.from?.pathname);
 
 
->>>>>>> a67618d (creat userContext)
     const auth = getAuth(app);
     const handleLoginForm = (event) =>{
         event.preventDefault();
@@ -48,11 +39,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             if(user){
-<<<<<<< HEAD
-                navigate('/')
-=======
                 navigate(from, { replace: true });
->>>>>>> a67618d (creat userContext)
             }
         })
         .catch(error =>{
